@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './Card.css'
 
 
 const Login = (props) => {
@@ -24,8 +24,9 @@ const LoginHandler = (event) => {
 return(
 <main>
     <form>
+        
         <legend>Sign in</legend>
-        <div className='control-group'>
+        <div className='card'>
             <div className='form-control'>
             <label htmlFor="name">Username</label>
         <input type="text" placeholder="Enter Username" onChange={onChangeUsername} />
@@ -41,7 +42,7 @@ return(
         <a href="Register">Register</a>
         
         </div>
-      
+        
     </form>
 </main>
 )
