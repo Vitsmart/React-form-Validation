@@ -1,50 +1,60 @@
-import { useRef, useState } from "react";
+import {  useState } from "react";
 
 
 
 const SimpleInput = (props) => {
 
 const [enteredName, setEnteredName] = useState('');
-const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
 const [enteredNameIsTouched, setEnteredNameIsTouched] = useState(false);
-const nameInputRef = useRef();
+const [formIsValid, setFormIsValid] = useState(false);
+
+const enteredNameIsValid = enteredName.trim() !== '';
+const nameInputIsInValid = !enteredNameIsValid && enteredNameIsTouched;
+
+// useEffect(() => {
+//   if (enteredNameIsValid){
+//     setFormIsValid(true)
+//   } else {
+//     setFormIsValid(false)
+//   }
+// }, [enteredNameIsValid]);
+
+ //formIsValid = false;
+
+if (enteredNameIsValid){
+  setFormIsValid(true)
+}
+
 
 const nameChangeHandler = (event) => {
 setEnteredName(event.target.value);
-setEnteredNameIsTouched(true);
-if (event.target.value.trim() !== '') {
-  setEnteredNameIsValid(false);
-}
 };
+
 const nameInputBlurHandler = () => {
   setEnteredNameIsTouched(true);
-  if (enteredName.trim() === '') {
-    setEnteredNameIsValid(false)
-  }
-};
+  };
+
 const formSubmissionHandler = event => {
   event.preventDefault();
   
   setEnteredNameIsTouched(true);
-  if (enteredName.trim() === '') {
-    setEnteredNameIsValid(false)
+  if (!enteredNameIsValid) {
     return;
   }
-setEnteredNameIsValid(true);
 
 console.log(enteredName);
-const enteredValue = nameInputRef.current.value;
-console.log(enteredValue);
+
 setEnteredName('');
+setEnteredNameIsTouched(false);
 };
-const nameInputIsInValid = !enteredNameIsValid && enteredNameIsTouched;
+
 const nameInputClasses = nameInputIsInValid ? "form-control invalid" : "form-control" ;
 
   return (
     <form onSubmit={formSubmissionHandler}>
       <div className={nameInputClasses}>
         <label htmlFor='name'>Your Name</label>
-        <input ref={nameInputRef} 
+        <input 
         type='text' 
         id='name' 
         onChange={nameChangeHandler} 
@@ -53,7 +63,7 @@ const nameInputClasses = nameInputIsInValid ? "form-control invalid" : "form-con
         {nameInputIsInValid && <p className="error-text">Name must not be empty</p>}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );

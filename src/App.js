@@ -1,9 +1,14 @@
-import SimpleInput from './components/SimpleInput';
+
+import Login from './components/SignIn/Login';
+
 
 function App() {
+  
+  
   return (
     <div className="app">
-      <SimpleInput />
+    
+      <Login  />
     </div>
   );
 }

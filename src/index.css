@@ -5,18 +5,19 @@
 }
 
 html {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Courier New', Courier, monospace
 }
 
 body {
   margin: 0;
-  background-color: #3f3f3f;
+  background-color: mediumaquamarine;
+  
 }
 
 .app {
-  width: 90%;
-  max-width: 43rem;
-  padding: 1rem;
+  width: 100%;
+  max-width: 35rem;
+  padding: 2rem;
   border-radius: 12px;
   background-color: white;
   margin: 3rem auto;
@@ -28,7 +29,12 @@ body {
 
 .form-control input,
 .form-control label {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+margin-left: 3rem;
+
 }
 
 .form-control label {
@@ -41,8 +47,8 @@ body {
   font: inherit;
   padding: 0.5rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
-  width: 20rem;
+  border: 1px solid black;
+  width: 25rem;
   max-width: 100%;
 }
 
@@ -53,9 +59,12 @@ body {
 }
 
 .control-group {
-  display: flex;
+  display: inline-block;
   column-gap: 1rem;
-  flex-wrap: wrap;
+  
+  
+  
+  box-shadow: 5px;
 }
 
 .control-group .form-control {
@@ -63,7 +72,7 @@ body {
   flex: 1;
 }
 
-button {
+.button {
   font: inherit;
   background-color: #240370;
   color: white;
@@ -71,7 +80,21 @@ button {
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
+  margin-left: 12rem;
+  margin-bottom: 2rem;
 }
+
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background-color: #ccc;
+  color: gray;
+  border: #ccc;
+  cursor: not-allowed;
+}
+
+
+
 
 button:hover,
 button:active {
@@ -99,4 +122,17 @@ button:active {
 
 .error-text {
   color: #b40e0e;
+}
+a {
+
+  margin-left: 13rem;
+}
+legend {
+  font-size: x-large;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-family: 'Courier New', Courier, monospace;
 }
